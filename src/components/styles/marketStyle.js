@@ -3,6 +3,52 @@ import styled from "styled-components";
 export const MarketStyle = styled.div`
   /* width: 100%; */
 
+  .coin {
+    background: #7d30f5;
+    height: 64px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .siderCard {
+    /* width: 100%;?? */
+    background: #7d30f5;
+    border-radius: 12px;
+    padding: 14px 6px 6px 18px;
+    margin-bottom: 16px;
+  }
+    .heading {
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      margin-bottom: 12px;
+    }
+
+    .text {
+      font-size: 12px;
+    }
+
+    .icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: #17151d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: #2a7ec2;
+      margin-left: auto;
+      margin-top: -24px;
+      cursor: pointer;
+    }
+  }
+
   .coinCompWrapper {
     width: 100%;
     height: 64px;
@@ -32,18 +78,24 @@ export const MarketStyle = styled.div`
         font-size: 18px;
       }
 
-      .graph {
-        width: 65%;
-        height: 80%;
-        margin-left: 2%;
-        border: 1px solid red;
-      }
+      .graphChange {
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 8px;
 
-      .priceChange {
-        font-size: 10px;
-        color: #32aa62;
-        font-weight: 600;
-        margin-top: 16px;
+        .graph {
+          width: 80%;
+          height: 80%;
+        }
+
+        .priceChange {
+          font-size: 10px;
+          color: #32aa62;
+          font-weight: 600;
+          margin-top: 24px;
+        }
       }
 
       .price {
@@ -92,12 +144,14 @@ export const MarketStyle = styled.div`
 
     .marketBody {
       width: 100%;
+      display: flex;
+      column-gap: 24px;
 
       .marketMain {
         width: 70%;
 
         .marketLeaders {
-          width: 100%;
+          /* width: 100%; */
           height: 280px;
           background: #241f2a;
           border-radius: 12px;
@@ -120,6 +174,12 @@ export const MarketStyle = styled.div`
             overflow-y: scroll;
             -ms-overflow-style: none;
             scrollbar-width: none;
+
+            .coinsList {
+              display: flex;
+              gap: 16px;
+              flex-wrap: wrap;
+            }
           }
 
           .coinsWrapper::-webkit-scrollbar {
@@ -127,6 +187,37 @@ export const MarketStyle = styled.div`
           }
         }
       }
+
+      .marketSider {
+        width: 25%;
+        height: 82vh;
+        border-radius: 12px;
+        background: #241f2a;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+
+        .siderHeader{
+            margin-left: 16px;
+            font-weight: 500;
+        }
+        
+        .wrapper{
+            /* height: 50%; */
+            direction: flex;
+            flex-direction: column;
+            row-gap: 16px;
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+
+        }
+
+        .wrapper::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
     }
   }
 `;
