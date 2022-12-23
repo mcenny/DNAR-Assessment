@@ -64,7 +64,7 @@ export const MarketStyle = styled.div`
       background: #fff;
       border-radius: 1px;
       margin-top: -24px;
-      margin-left: -1px;
+      margin-left: -1.5px;
     }
 
     .content {
@@ -124,8 +124,8 @@ export const MarketStyle = styled.div`
       align-items: center;
       padding: 0 8px;
       margin-bottom: 18px;
-
-      .icon {
+   
+      .searchIcon{
         color: #3f6eff;
         width: 54px;
         font-size: 20px;

@@ -79,24 +79,11 @@ export const Market = () => {
       });
   }, []);
 
-  // const [coin, setCoin] = useState([]);
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://api.coingecko.com/api/v3/coins/${coinsBucket[0].id}`)
-  //     .then((res) => {
-  //       setCoin(res.data);
-  //     })
-  //     .catch((error) => {
-  //       // console.log(error, "error");
-  //     });
-  // }, []);
-  // console.log(coin);
-
   return (
     <MarketStyle>
       <div className='marketWrapper'>
         <div className='marketSearch'>
-          <RiSearchLine className='icon' />
+          <RiSearchLine className='searchIcon' />
           <input type={"text"} className='input' placeholder='search' />
         </div>
 
