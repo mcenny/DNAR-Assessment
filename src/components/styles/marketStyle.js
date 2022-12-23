@@ -59,7 +59,7 @@ export const MarketStyle = styled.div`
     align-items: center;
 
     .borderLeft {
-      width: 2px;
+      width: 3px;
       height: 16px;
       background: #fff;
       border-radius: 1px;
@@ -76,18 +76,24 @@ export const MarketStyle = styled.div`
 
       .coinName {
         font-size: 18px;
+        width: 15%;
       }
 
       .graphChange {
-        width: 60%;
+        width: 65%;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        column-gap: 8px;
+        /* column-gap: 8px; */
 
         .graph {
           width: 80%;
           height: 80%;
+
+          hr{
+            width: 100%;
+            border: 0.5px solid #a4a4a4;
+          }
         }
 
         .priceChange {
@@ -100,6 +106,8 @@ export const MarketStyle = styled.div`
 
       .price {
         font-size: 24px;
+        width: 15%;
+        text-align: right;
       }
     }
   }

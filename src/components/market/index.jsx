@@ -7,7 +7,6 @@ import axios from "axios";
 const CoinSummary = ({ name, value, priceChange, symbol, id }) => {
   const priceIncrease = priceChange < 0 ? false : priceChange === 0 ? 0 : true;
   const absChange = Math.abs(priceChange);
-  console.log(id);
   return (
     <MarketStyle>
       <div className='coinCompWrapper'>
@@ -15,7 +14,9 @@ const CoinSummary = ({ name, value, priceChange, symbol, id }) => {
         <div className='content'>
           <p className='coinName'>{`${name} (${symbol.toUpperCase()})`}</p>
           <div className='graphChange'>
-            <span className='graph'>graph</span>
+            <span className='graph'>
+              <hr />
+            </span>
             <span
               className='priceChange'
               // style={priceIncrease === false ? { color: "red" } : null}
