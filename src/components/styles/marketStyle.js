@@ -176,7 +176,7 @@ export const MarketStyle = styled.div`
       outline: none;
     }
   }
-  
+
   .marketWrapper {
     width: 100%;
 
