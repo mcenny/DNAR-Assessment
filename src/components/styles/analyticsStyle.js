@@ -38,7 +38,7 @@ export const AnalyticsStyle = styled.div`
     .graph {
       height: 100%;
       margin: 0 24px 18px;
-      border: 1px solid #a4a4a4;
+      /* border: 1px solid #a4a4a4; */
     }
   }
 

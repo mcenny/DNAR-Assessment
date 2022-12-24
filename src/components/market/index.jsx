@@ -77,7 +77,7 @@ export const SearchInput = () => {
   );
 };
 
-export const Market = () => {
+export const Market = ({ handleSelectCoin }) => {
   const [coinsBucket, setCoinsBucket] = useState([]);
   useEffect(() => {
     axios
@@ -123,7 +123,16 @@ export const Market = () => {
                 <div className='coinsList'>
                   {coinsBucket.map((coin, index) => {
                     return (
-                      <Coin key={index} name={coin.name} symbol={coin.symbol} />
+                      <div
+                        onClick={() => handleSelectCoin(coin.id)}
+                        key={index}
+                      >
+                        <Coin
+                          key={index}
+                          name={coin.name}
+                          symbol={coin.symbol}
+                        />
+                      </div>
                     );
                   })}
                 </div>

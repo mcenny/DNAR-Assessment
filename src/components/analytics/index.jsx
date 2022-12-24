@@ -9,29 +9,51 @@ import {
   BsGithub,
 } from "react-icons/bs";
 import { GrReddit } from "react-icons/gr";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
 
-const Chart = () => {
+const Chart = ({ selectedCoin, market }) => {
+  const percentageChange = selectedCoin.market_data.price_change_percentage_24h;
+  console.log(market, ":: market");
   return (
     <AnalyticsStyle>
       <div className='chart'>
         <div className='priceInfo'>
           <h3 className='price'>
-            {`$${(29800.65).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}`}
+            {`$${selectedCoin.market_data.current_price.usd
+              .toFixed(2)
+              .replace(/\d(?=(\d{3})+\.)/g, "$&,")}`}
           </h3>
-          <p className='priceChange'>
-            +2.43%{" "}
-            <span className='icon'>
-              {true ? <BsGraphUp /> : <BsGraphDown />}
+          <p
+            className='priceChange'
+            style={percentageChange >= 0 ? null : { color: "red" }}
+          >
+            {percentageChange >= 0 ? "+" : ""}
+            {percentageChange}%
+            <span
+              className='icon'
+              style={percentageChange >= 0 ? null : { color: "red" }}
+            >
+              {percentageChange >= 0 ? <BsGraphUp /> : <BsGraphDown />}
             </span>
           </p>
         </div>
-        <div className='graph'>graph here!</div>
+        <div className='graph'>
+          <App />
+        </div>
       </div>
     </AnalyticsStyle>
   );
 };
 
-const Exchange = () => {
+const Exchange = ({ selectedCoin }) => {
   const currencies = [
     { value: "usd", label: "USD" },
     { value: "btc", label: "BTC" },
@@ -85,7 +107,7 @@ const Exchange = () => {
   );
 };
 
-export const Analytics = () => {
+export const Analytics = ({ selectedCoin, market }) => {
   return (
     <AnalyticsStyle>
       <div className='analyticsWrapper'>
@@ -94,33 +116,35 @@ export const Analytics = () => {
             <SearchInput />
             <div className='datePicker'></div>
           </div>
-          <Chart />
+          <Chart selectedCoin={selectedCoin} market={market} />
           <div className='exchangeRank'>
             <div className='exchange'>
-              <Exchange />
+              <Exchange selectedCoin={selectedCoin} />
             </div>
             <div className='rank'>
               <div className='heading'>
                 <div className='borderLeft'></div>
                 <p className='text'>Alexa Rank</p>
               </div>
-              <p className='rankValue'>9940</p>
+              <p className='rankValue'>
+                {selectedCoin.public_interest_stats.alexa_rank}
+              </p>
             </div>
           </div>
         </div>
         <div className='info'>
           <div className='coinLogo'>
-            <img src='/logo512.png' alt='Coin logo' srcset='/logo512.png' />
+            <img
+              src={selectedCoin.image.thumb}
+              alt='Coin logo'
+              srcset={selectedCoin.image.thumb}
+            />
           </div>
           <h2 className='heading'>Info Card</h2>
           <div className='description'>
             <h3 className='heading'>Description: </h3>
             <p className='text'>
-              Lorem ipsum dolor sit amet, officia excepteur ex fugiat
-              reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit
-              ex esse exercitation amet. Nisi anim cupidatat excepteur officia.
-              Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet
-              voluptate voluptate dolor minim nulla est proident.
+              {selectedCoin.description.en.substring(0, 150) + "..."}
             </p>
           </div>
           <div className='url'>
@@ -140,30 +164,34 @@ export const Analytics = () => {
             <div className='facts'>
               <div className='fact'>
                 <p>Hashing Algorithm</p>
-                <p>SHA-256</p>
+                <p>{selectedCoin.hashing_algorithm || "Unknown"}</p>
               </div>
               <div className='fact'>
                 <p>Country of Origin</p>
-                <p>Nigeria</p>
+                <p>{selectedCoin.country_origin || "Unknown"}</p>
               </div>
               <div className='fact'>
                 <p>Category</p>
-                <p>Cryptocurrency</p>
+                <p>{selectedCoin.categories[0]}</p>
               </div>
             </div>
           </div>
           <div className='supplyInfo'>
             <div className='fact'>
               <p>Total Supply</p>
-              <p>21000000.0</p>
+              <p>{selectedCoin.market_data.total_supply.toFixed(2)}</p>
             </div>
             <div className='fact'>
               <p>Max Supply</p>
-              <p>2100000.0</p>
+              <p>
+                {selectedCoin.market_data.max_supply
+                  ? selectedCoin.market_data.max_supply.toFixed(2)
+                  : "Unknown"}
+              </p>
             </div>
             <div className='fact'>
               <p>Circulating</p>
-              <p>1876196.0</p>
+              <p>{selectedCoin.market_data.circulating_supply.toFixed(2)}</p>
             </div>
           </div>
         </div>
@@ -171,3 +199,85 @@ export const Analytics = () => {
     </AnalyticsStyle>
   );
 };
+
+const data = [
+  {
+    name: "Page A",
+    uv: 4000,
+    coin: 2400,
+    amt: 2400,
+  },
+  {
+    name: "Page B",
+    uv: 3000,
+    coin: 1398,
+    amt: 2210,
+  },
+  {
+    name: "Page C",
+    uv: 2000,
+    coin: 9800,
+    amt: 2290,
+  },
+  {
+    name: "Page E",
+    uv: 1890,
+    coin: 4800,
+    amt: 2181,
+  },
+  {
+    name: "Page D",
+    uv: 2780,
+    coin: 3908,
+    amt: 2000,
+  },
+  {
+    name: "Page E",
+    uv: 1890,
+    coin: 4800,
+    amt: 2181,
+  },
+  {
+    name: "Page B",
+    uv: 3000,
+    coin: 1398,
+    amt: 2210,
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    coin: 3800,
+    amt: 2500,
+  },
+  {
+    name: "Page G",
+    uv: 3490,
+    coin: 4300,
+    amt: 2100,
+  },
+];
+
+export default function App() {
+  return (
+    <LineChart
+      width={1000}
+      height={250}
+      data={data}
+      margin={{
+        top: 5,
+      }}
+    >
+      <CartesianGrid strokeDasharray='3 3' />
+      <XAxis />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Line
+        type='monotone'
+        dataKey='coin'
+        stroke='#2a7ec2'
+        activeDot={{ r: 8 }}
+      />
+    </LineChart>
+  );
+}
