@@ -19,7 +19,7 @@ const CoinSummary = ({ name, value, priceChange, symbol, id }) => {
             </span>
             <span
               className='priceChange'
-              // style={priceIncrease === false ? { color: "red" } : null}
+              style={priceIncrease === false ? { color: "red" } : null}
             >
               {priceIncrease === true
                 ? "+$"
@@ -66,6 +66,17 @@ const SiderCard = () => {
   );
 };
 
+export const SearchInput = () => {
+  return (
+    <MarketStyle>
+      <div className='marketSearch'>
+        <RiSearchLine className='searchIcon' />
+        <input type={"text"} className='input' placeholder='search' />
+      </div>
+    </MarketStyle>
+  );
+};
+
 export const Market = () => {
   const [coinsBucket, setCoinsBucket] = useState([]);
   useEffect(() => {
@@ -82,10 +93,7 @@ export const Market = () => {
   return (
     <MarketStyle>
       <div className='marketWrapper'>
-        <div className='marketSearch'>
-          <RiSearchLine className='searchIcon' />
-          <input type={"text"} className='input' placeholder='search' />
-        </div>
+        <SearchInput />
 
         <div className='marketBody'>
           <div className='marketMain'>

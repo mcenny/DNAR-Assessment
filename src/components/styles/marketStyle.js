@@ -12,11 +12,18 @@ export const MarketStyle = styled.div`
     align-items: center;
     padding: 0 16px;
     font-size: 18px;
+    width: 100%;
+    max-width: max-content;
+    overflow: none;
     cursor: pointer;
+
+    @media(max-width: 425px){
+        font-size: 14px;
+        max-width: 100%;
+    }
   }
 
   .siderCard {
-    /* width: 100%;?? */
     background: #7d30f5;
     border-radius: 12px;
     padding: 14px 6px 6px 18px;
@@ -52,11 +59,17 @@ export const MarketStyle = styled.div`
   .coinCompWrapper {
     width: 100%;
     height: 64px;
+    max-width: 100%;
     background: #7d30f5;
     border-radius: 12px;
     margin-bottom: 16px;
     display: flex;
     align-items: center;
+
+    @media(max-width: 425px){
+        font-size: 14px;
+        max-width: 100%;
+    }
 
     .borderLeft {
       width: 3px;
@@ -74,6 +87,12 @@ export const MarketStyle = styled.div`
       align-items: center;
       justify-content: space-between;
 
+      @media(max-width: 425px){
+        justify-content: flex-start;
+        column-gap: 8px;
+          font-size: 14px;
+        }
+
       .coinName {
         font-size: 18px;
         width: 15%;
@@ -86,9 +105,20 @@ export const MarketStyle = styled.div`
         justify-content: space-between;
         /* column-gap: 8px; */
 
+        @media(max-width: 425px){
+          display: none;
+        }
+
+
+        @media(max-width: 768px){
+            display: none;
+            
+        }
+
         .graph {
           width: 80%;
           height: 80%;
+
 
           hr{
             width: 100%;
@@ -112,43 +142,44 @@ export const MarketStyle = styled.div`
     }
   }
 
+  .marketSearch {
+    width: 90%;
+    height: 42px;
+    border: 1px solid #241f2a;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    margin-bottom: 18px;
+ 
+    .searchIcon{
+      color: #3f6eff;
+      width: 54px;
+      font-size: 20px;
+    }
+
+    .input {
+      background: none;
+      border: none;
+      width: 100%;
+      height: 34px;
+      color: #fff;
+      padding: 0 8px;
+    }
+
+    .input:active {
+      border: none;
+    }
+
+    .input:focus {
+      border: none;
+      outline: none;
+    }
+  }
+  
   .marketWrapper {
     width: 100%;
 
-    .marketSearch {
-      width: 90%;
-      height: 42px;
-      border: 1px solid #241f2a;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      margin-bottom: 18px;
-   
-      .searchIcon{
-        color: #3f6eff;
-        width: 54px;
-        font-size: 20px;
-      }
-
-      .input {
-        background: none;
-        border: none;
-        width: 100%;
-        height: 34px;
-        color: #fff;
-        padding: 0 8px;
-      }
-
-      .input:active {
-        border: none;
-      }
-
-      .input:focus {
-        border: none;
-        outline: none;
-      }
-    }
 
     .marketBody {
       width: 100%;
@@ -157,6 +188,10 @@ export const MarketStyle = styled.div`
 
       .marketMain {
         width: 70%;
+
+        @media(max-width: 425px){
+            width: 100%;
+        }
 
         .marketLeaders {
           /* width: 100%; */
@@ -204,6 +239,10 @@ export const MarketStyle = styled.div`
         margin-left: auto;
         display: flex;
         flex-direction: column;
+
+        @media(max-width: 425px){
+            display: none;
+        }
 
         .siderHeader{
             margin-left: 16px;
